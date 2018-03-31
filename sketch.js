@@ -51,7 +51,7 @@ function setup() {
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)
       .setPopup(new mapboxgl.Popup({
-          offset: 3000
+          offset: 25
         }) // add popups
         .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
       .addTo(map);
