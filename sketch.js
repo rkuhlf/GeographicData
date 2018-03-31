@@ -8,6 +8,14 @@ var map = new mapboxgl.Map({
   center: [0, 0]
 });
 
+var points = [];
+
+addPoint(45, 21);
+addPoint(121, 30);
+addPoint(60, 75);
+addPoint(-30, -50);
+
+
 map.on("load", function() {
   /* Image: An image is loaded and added to the map. */
   map.loadImage("https://i.imgur.com/MK4NUzI.png", function(error, image) {
@@ -22,21 +30,7 @@ map.on("load", function() {
         type: "geojson",
         data: {
           type: "FeatureCollection",
-          features: [{
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": ["121", "31"]
-              }
-          },
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": ["0", "0"]
-              }
-          },
-        ]
+          features: points
         }
       },
       layout: {
@@ -45,3 +39,14 @@ map.on("load", function() {
     });
   });
 });
+
+
+function addPoint(lon, lat) {
+  points.push({
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [lon, lat]
+    }
+  });
+}
